@@ -13,7 +13,18 @@
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        
+        // check if first name is empty
+		if(empty($_POST["firstname"]))
+		{
+			apologize("Please insert your first name");
+	    }
+
+        // check if last name is empty
+		if(empty($_POST["lastname"]))
+		{
+			apologize("Please insert your last name");
+	    }
+	    
         // check if username is empty
 		if(empty($_POST["username"]))
 		{
@@ -33,7 +44,7 @@
 		}
 		
 		// insert the new user into database
-		$new_user = CS50::query("INSERT IGNORE INTO users (username, hash, cash) VALUES(?, ?, 10000.0000)", $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT));
+		$new_user = CS50::query("INSERT IGNORE INTO users (firstname, lastname, username, hash, cash) VALUES(?, ?, ?, ?, 10000.0000)", $_POST["firstname"], $_POST["lastname"], $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT));
         
         // check if user already exists
         if ($new_user != true)
