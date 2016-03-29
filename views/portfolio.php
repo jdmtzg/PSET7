@@ -1,11 +1,12 @@
+
 <table class ="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Symbol</th>
-            <th>Shares</th>
-            <th>Price</th>
-            <th>Total</th>
+            <th class="text-left" style= "font-family:Verdana; font-size:18px; color:#0066FF">Name</th>
+            <th class="text-left" style= "font-family:Verdana; font-size:18px; color:#CC0000">Symbol</th>
+            <th class="text-left" style= "font-family:Verdana; font-size:18px; color:#FFCC00">Shares</th>
+            <th class="text-left" style= "font-family:Verdana; font-size:18px; color:green">Price</th>
+            <th class="text-left" style= "font-family:Verdana; font-size:18px; color:#CC0000">Total</th>
         </tr>
     </thead>
     <tbody>
