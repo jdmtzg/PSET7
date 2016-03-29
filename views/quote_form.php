@@ -1,3 +1,4 @@
+<body style="background-color: #e6ecff"/>
 <form action="quote.php" method="post">
     <fieldset>
         <div class="form-group">
@@ -5,7 +6,7 @@
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">
-                Get quote
+                Get Quote
             </button>
         </div>
     </fieldset>
