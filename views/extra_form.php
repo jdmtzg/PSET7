@@ -1,3 +1,4 @@
+<body style="background-color: #ffcccc"/>
 <form action="extra.php" method="post">
     <fieldset>
         <div class="form-group">
@@ -5,7 +6,8 @@
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">
-                Deposit
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                 Deposit
             </button>
         </div>
     </fieldset>
