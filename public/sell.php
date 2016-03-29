@@ -26,18 +26,37 @@
         
         $shares = CS50::query("SELECT shares FROM portfolio WHERE user_id = ? AND symbols = ?", $_SESSION["id"], $_POST["symbol"]);
         $stock = lookup($_POST["symbol"]);
-     
-        $gain = $shares[0]["shares"] * $stock["price"];
+        $shareamount = $_POST["shareamount"];
         
-        CS50::query("UPDATE users SET cash = (cash + ".$gain.") WHERE id = ?", $_SESSION["id"]);
+        if ($_POST["shareamount"] == NULL)
+        {
+            apologize("Enter a number of shares");
+        }
         
-        // Symbol eliminates because it is already sold
-        $rows = CS50::query("DELETE FROM portfolio WHERE user_id = ? AND symbols = ?", $_SESSION["id"], 
-        $stock["symbol"]);
+        else if ($_POST["shareamount"] < 0)
+        {
+            apologize("Enter a possible amount");
+        }
         
-        //history
-        CS50::query("INSERT INTO history (user_id, type, time, symbols, shares, price) VALUES(?,'Sold',NOW(), ?, ?, ?)", $_SESSION["id"], $_POST["symbol"], $_POST["shares"], $stock["price"]);
-
-        redirect("/");
-    }
-?>
+        else if ($_POST["shareamount"] > $shares[0]["shares"])
+        {
+            apologize("Not enough shares to sell");
+        }
+        $value = $stock["price"] * $shareamount;
+        
+       
+        if ($_POST["shareamount"] < $shares[0]["shares"])
+        {
+            $rows = CS50::query("UPDATE portfolio SET shares = (shares - ".$shareamount.") WHERE user_id = ? AND symbols = ?", $_SESSION["id"], $stock["symbol"]);
+        }
+        
+        else if ($_POST["shareamount"] == $shares[0]["shares"])
+        {
+            $rows = CS50::query("DELETE FROM portfolio WHERE user_id = ? AND symbols = ?", $_SESSION["id"], $stock["symbol"]);
+        }
+        CS50::query("UPDATE users SET cash = (cash + ".$value.") WHERE id = ?", $_SESSION["id"]);
+        CS50::query("INSERT INTO history (user_id, type, time, symbols, shares, price) VALUES(?,'Sold',NOW(), ?, ?, ?)", $_SESSION["id"], $_POST["symbol"], $_POST["shareamount"], $stock["price"]);
+        
+        redirect("/");    
+    }    
+?>     
