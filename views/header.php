@@ -35,13 +35,13 @@
                 </div>
                 <?php if (!empty($_SESSION["id"])): ?>
                     <ul class="nav nav-pills">
-                        <li><a class='text-bold' style= "color:#CC0000" href="index.php"><?= $firstname ?> <?= $lastname ?></a></li>
-                        <li><a style= "color:#FFCC00"href="quote.php">Quote</a></li>
-                        <li><a style= "color:green"href="buy.php">Buy</a></li>
-                        <li><a style= "color:#CC0000"href="sell.php">Sell</a></li>
-                        <li><a style= "color:#CC0000" href="history.php">History</a></li>
-                        <li><a style= "color:#CC0000"href="extra.php">Deposit</a></li>
-                        <li><a style= "color:#CC0000"href="logout.php">Log Out</a></li>
+                        <li><a style= "font-size:14px;" href="index.php"><?= $firstname ?> <?= $lastname ?></a></li>
+                        <li><a style= "font-size:14px;" href="quote.php">Quote</a></li>
+                        <li><a style= "font-size:14px;" href="buy.php">Buy</a></li>
+                        <li><a style= "font-size:14px;" href="sell.php">Sell</a></li>
+                        <li><a style= "font-size:14px;" href="history.php">History</a></li>
+                        <li><a style= "font-size:14px;" href="extra.php">Deposit</a></li>
+                        <li><a style= "font-size:14px;" href="logout.php">Log Out</a></li>
                     </ul>
                 <?php endif ?>
             </div>
